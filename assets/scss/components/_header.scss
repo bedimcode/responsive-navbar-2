@@ -1,0 +1,152 @@
+/*=============== HEADER & NAV ===============*/
+.header{
+   position: fixed;
+   width: 100%;
+   top: 0;
+   left: 0;
+   background-color: var(--black-color);
+   z-index: var(--z-fixed);
+}
+
+.nav{
+   position: relative;
+   height: var(--header-height);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   &__logo{
+      color: var(--white-color);
+      font-weight: var(--font-medium);
+   }
+   &__close,
+   &__toggle{
+      display: flex;
+      color: var(--white-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+   }
+   // Navigation for mobile devices
+   @media screen and (max-width: 1150px){
+      &__menu{
+         position: fixed;
+         left: -100%;
+         top: 0;
+         background-color: var(--black-color);
+         width: 100%;
+         height: 100%;
+         padding: 6rem 3.5rem 4.5rem;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         transition: left .4s;
+      }
+      &__item{
+         transform: translateX(-150px);
+         visibility: hidden;
+         transition: transform .4s ease-out, visibility .4s;
+   
+         &:nth-child(1){
+            transition-delay: .1s;
+         }
+         &:nth-child(2){
+            transition-delay: .2s;
+         }
+         &:nth-child(3){
+            transition-delay: .3s;
+         }
+         &:nth-child(4){
+            transition-delay: .4s;
+         }
+         &:nth-child(5){
+            transition-delay: .5s;
+         }
+      }
+   }
+   &__list,
+   &__social{
+      display: flex;
+   }
+   &__list{
+      flex-direction: column;
+      row-gap: 3rem;
+   }
+   &__link{
+      position: relative;
+      color: var(--white-color);
+      font-size: var(--h1-font-size);
+      font-weight: var(--font-medium);
+      display: inline-flex;
+      align-items: center;
+      transition: opacity .4s;
+
+      & i{
+         font-size: 2rem;
+         position: absolute;
+         opacity: 0;
+         visibility: hidden;
+         transition: opacity .4s, visibility .4s;
+      }
+      & span{
+         position: relative;
+         transition: margin .4s;
+
+         &::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background-color: var(--white-color);
+            transition: width .4s ease-out;
+         }
+      }
+   }
+   // Animation link on hover
+   &__link{
+      &:hover span{
+         margin-left: 2.5rem;
+      }
+      &:hover i{
+         opacity: 1;
+         visibility: visible;
+      }
+      &:hover span::after{
+         width: 100%;
+      }
+   }
+   // Sibling fade animation
+   &__list:has(&__link:hover) &__link:not(:hover){
+      opacity: .4;
+   }
+   &__close{
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+   }
+   &__social{
+      column-gap: 1rem;
+
+      &-link{
+         color: var(--white-color);
+         font-size: 1.5rem;
+         transition: transform .4s;
+
+         &:hover{
+            transform: translateY(-.25rem);
+         }
+      }
+   }
+}
+
+/* Show menu */
+.show-menu{
+   left: 0;
+}
+
+// Animation link when displaying menu
+.show-menu .nav__item{
+   visibility: visible;
+   transform: translateX(0);
+}

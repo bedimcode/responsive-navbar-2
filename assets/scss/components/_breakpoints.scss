@@ -1,0 +1,32 @@
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (min-width: 1150px){
+   .container{
+      margin-inline: auto;
+   }
+
+   .nav{
+      height: calc(var(--header-height) + 2rem);
+
+      &__toggle,
+      &__close{
+         display: none;
+      }
+      &__link{
+         font-size: var(--normal-font-size);
+
+         & i{
+            font-size: 1.5rem;
+         }
+      }
+      &__list{
+         flex-direction: row;
+         column-gap: 3.5rem;
+      }
+      &__menu{
+         display: flex;
+         align-items: center;
+         column-gap: 3.5rem;
+      }
+   }
+}
