@@ -1,0 +1,16 @@
+========== NAV ==========
+.nav__logo
+Logo
+
+.nav__link span
+Home
+About Us
+Projects
+Studio
+Contact
+
+.nav__social
+https://www.instagram.com/
+https://github.com/
+https://dribbble.com/
+https://www.linkedin.com/
